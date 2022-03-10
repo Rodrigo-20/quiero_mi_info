@@ -1,3 +1,7 @@
+:root {
+    --blue:  #001d33;
+    --green: #06d6a0;
+}
 *{
     padding: 0;
     margin: 0;
@@ -9,11 +13,15 @@ html {
     display: flex;
     justify-content: space-between;
     padding: 1em;
+    
 }
 nav {
     position: fixed;
     right: 1em;
     top: 1em;
+    
+    /* mix-blend-mode:difference; */
+    
 }
 .logo{
     position: fixed;
@@ -24,12 +32,43 @@ nav {
 nav > ul {
     list-style: none;
     display: flex;
-    padding-right: .5em;
+    padding-right: .5em; 
+    color: #fff;
+    font-weight: 700;
 }
 li {
-    padding-left: .5em;
+    padding: .3em .8em;
     cursor: pointer;
+    position: relative;
+    /* background-color: #001d33;
+    border-radius: 15%; */
 }
+
+li::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: -.2em;
+    bottom: 0em;
+    z-index: -1;
+    border: 2px solid var(--green);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    background-color: var(--blue);
+    transition: transform .3s ease;
+    
+}
+
+li:hover::before {
+     transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.active::before {
+    transform: scaleX(1);
+}
+
 a{
     text-decoration: none;
     color: unset;
@@ -50,7 +89,7 @@ a{
     margin: 0;
     padding: 0;
     height: 100%;
-    color: aliceblue;
+    color: #fff;
     
 }
 .home {
@@ -78,7 +117,7 @@ a{
        background-color: rgba(0,0,0,.8);
        top: 0;
        margin: 0;
-        
+       mix-blend-mode:unset;
        transition: transform .5s ease ;
        right: -50vw;
        
@@ -142,13 +181,13 @@ a{
     .menu:before{
         content: '';
         display: block;
-    width: 100%;
-    height: .2em;
-    background-color:#fff;
-    position: relative;
-    bottom: .7em;      
-    transition: transform .5s ease;
-    transform-origin: left;
+        width: 100%;
+        height: .2em;
+        background-color:#fff;
+        position: relative;
+        bottom: .7em;      
+        transition: transform .5s ease;
+        transform-origin: left;
 }
 .close{
     height: 0;
@@ -168,21 +207,26 @@ a{
        z-index: 3;
        
    }
-   .top li:after{
+   .top li::after{
     content: '';
     height: .2em;
-    transform: scale(0);
+    transform: scaleX(0);
     background-color:#3cfa98;
     display: block;
     position: relative;
     transform-origin: right;
-    transition:transform .3s ease-in-out;
+    transition:transform .3s ease;
 }
-.top li:hover:after {
-    
+.top li:hover::after {
     transform-origin: left;
-    transform: scale(1);
+    transform: scaleX(1);   
+   }
    
+   .active::after {
+        transform: scaleX(1);
+   }
+   .top li::before {
+       content: none;
    }
    
 }
