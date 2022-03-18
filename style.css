@@ -75,14 +75,16 @@ a{
 }
 
 .body {
+    margin: 0 auto;
     display: flex;
     justify-content: center;
-    
-    
+    align-items: center;
+    flex-direction: column;
+    padding-top: 13em;
 }
 .body h1 {
-    position: relative;
-    top: 3em;
+    /* position: relative;
+    top: 3em; */
 }
 
 .page{
@@ -92,20 +94,38 @@ a{
     color: #fff;
     
 }
-.home {
+#inicio {
+    
     background-image: url('./public/blob-scene-home-2.svg');
     background-size: cover;
 
 }
-.nosotros{
+#nosotros{
 
     background-image: url('./public/blob-haikei(1).svg');
     background-size: cover;
 
 }
+
+#preguntas {
+    background-image: url('/public/wave-haikei\ \(2\).svg');
+    background-size: cover;
+}
 .page-2 h2{
     padding: 0;
     margin: 0;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    padding-top: 12em;
+    align-items: center;
+}
+
+.pregunta{
+    width: 70%;
+    height: 4em;
+    border: 1px solid white;
 }
 
 @media only screen and (max-width:510px) {
@@ -213,7 +233,7 @@ a{
     transform: scaleX(0);
     background-color:#3cfa98;
     display: block;
-    position: relative;
+    
     transform-origin: right;
     transition:transform .3s ease;
 }
@@ -221,8 +241,8 @@ a{
     transform-origin: left;
     transform: scaleX(1);   
    }
-   
-   .active::after {
+
+   li.active::after {
         transform: scaleX(1);
    }
    .top li::before {
